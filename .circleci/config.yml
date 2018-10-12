@@ -1205,14 +1205,14 @@ workflows:
   # Various slow and non-essential checks we run only nightly.
   # Sanitizer jobs should be added here.
   linux-checks-nightly:
-    triggers:
-      - schedule:
-          cron: "0 0 * * *"
-          filters:
-            branches:
-              only:
-                - master
-                - *chromium-upgrade-branches
+#    triggers:
+#      - schedule:
+#          cron: "0 0 * * *"
+#          filters:
+#            branches:
+#              only:
+#                - master
+#                - *chromium-upgrade-branches
     jobs:
       - linux-x64-checkout
 
