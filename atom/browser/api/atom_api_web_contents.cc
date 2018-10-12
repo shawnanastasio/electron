@@ -101,7 +101,7 @@
 #endif
 
 #if BUILDFLAG(ENABLE_PRINTING)
-#include "atom/browser/atom_print_preview_message_handler.h"
+#include "atom/browser/printing/print_preview_message_handler.h"
 #include "chrome/browser/printing/print_view_manager_basic.h"
 #endif
 
@@ -1467,7 +1467,7 @@ std::vector<printing::PrinterBasicInfo> WebContents::GetPrinterList() {
 void WebContents::PrintToPDF(const base::DictionaryValue& setting,
                              const PrintToPDFCallback& callback) {
 #if BUILDFLAG(ENABLE_PRINTING)
-  AtomPrintPreviewMessageHandler::FromWebContents(web_contents())
+  PrintPreviewMessageHandler::FromWebContents(web_contents())
       ->PrintToPDF(setting, callback);
 #endif
 }
