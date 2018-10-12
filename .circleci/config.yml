@@ -33,13 +33,13 @@ env-stack-dumping: &env-stack-dumping
   ELECTRON_ENABLE_STACK_DUMPING: '1'
 
 env-browsertests: &env-browsertests
-  GN_EXTRA_ARGS: 'is_component_ffmpeg = false'
-  BUILD_TARGET: electron:chromium_browsertests
+  GN_CONFIG: //electron/build/args/native_tests.gn
+  BUILD_TARGET: electron/spec:chromium_browsertests
   TESTS_CONFIG: src/electron/spec/configs/browsertests.yml
 
 env-unittests: &env-unittests
-  GN_EXTRA_ARGS: 'is_component_ffmpeg = false'
-  BUILD_TARGET: electron:chromium_unittests
+  GN_CONFIG: //electron/build/args/native_tests.gn
+  BUILD_TARGET: electron/spec:chromium_unittests
   TESTS_CONFIG: src/electron/spec/configs/unittests.yml
 
 env-only-disabled-tests: &env-only-disabled-tests
@@ -943,7 +943,6 @@ jobs:
     <<: *machine-linux-2xlarge
     environment:
       <<: *env-unittests
-      <<: *env-testing-build
       <<: *env-enable-sccache
       <<: *env-headless-testing
     <<: *steps-native-tests
@@ -952,7 +951,6 @@ jobs:
     <<: *machine-linux-2xlarge
     environment:
       <<: *env-unittests
-      <<: *env-testing-build
       <<: *env-enable-sccache
       <<: *env-headless-testing
       <<: *env-only-disabled-tests
@@ -962,7 +960,6 @@ jobs:
     <<: *machine-linux-2xlarge
     environment:
       <<: *env-unittests
-      <<: *env-testing-build
       <<: *env-enable-sccache
       <<: *env-headless-testing
     <<: *steps-native-tests
