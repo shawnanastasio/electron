@@ -431,6 +431,8 @@ static_library("electron_lib") {
     sources += [
       "atom/browser/atom_print_preview_message_handler.cc",
       "atom/browser/atom_print_preview_message_handler.h",
+      "atom/renderer/printing/print_render_frame_helper_delegate.cc",
+      "atom/renderer/printing/print_render_frame_helper_delegate.h",
     ]
     deps += [ "components/printing" ]
   }

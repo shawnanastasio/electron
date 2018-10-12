@@ -28,16 +28,6 @@ component("printing") {
     "//chrome/browser/printing/printer_query.h",
     "//chrome/browser/printing/printing_message_filter.cc",
     "//chrome/browser/printing/printing_message_filter.h",
-    "//chrome/renderer/prerender/prerender_dispatcher.cc",
-    "//chrome/renderer/prerender/prerender_dispatcher.h",
-    "//chrome/renderer/prerender/prerender_extra_data.cc",
-    "//chrome/renderer/prerender/prerender_extra_data.h",
-    "//chrome/renderer/prerender/prerender_helper.cc",
-    "//chrome/renderer/prerender/prerender_helper.h",
-    "//chrome/renderer/prerender/prerenderer_client.cc",
-    "//chrome/renderer/prerender/prerenderer_client.h",
-    "//chrome/renderer/printing/chrome_print_render_frame_helper_delegate.cc",
-    "//chrome/renderer/printing/chrome_print_render_frame_helper_delegate.h",
   ]
 
   deps = [
