@@ -42,6 +42,9 @@ env-unittests: &env-unittests
   BUILD_TARGET: electron:chromium_unittests
   TESTS_CONFIG: src/electron/spec/configs/unittests.yml
 
+env-only-disabled-tests: &env-only-disabled-tests
+  TESTS_ARGS: '--run-only-disabled-tests'
+
 # Build targets options.
 env-ia32: &env-ia32
   GN_EXTRA_ARGS: 'target_cpu = "x86"'
@@ -575,7 +578,8 @@ steps-native-tests: &steps-native-tests
           python src/electron/script/native-tests.py run \
             --config $TESTS_CONFIG \
             --tests-dir src/out/Default \
-            --output-dir test_results
+            --output-dir test_results  \
+            $TESTS_ARGS
 
     - store_artifacts:
         path: test_results
@@ -944,6 +948,16 @@ jobs:
       <<: *env-headless-testing
     <<: *steps-native-tests
 
+  linux-x64-disabled-unittests:
+    <<: *machine-linux-2xlarge
+    environment:
+      <<: *env-unittests
+      <<: *env-testing-build
+      <<: *env-enable-sccache
+      <<: *env-headless-testing
+      <<: *env-only-disabled-tests
+    <<: *steps-native-tests
+
   linux-x64-chromium-unittests:
     <<: *machine-linux-2xlarge
     environment:
@@ -1224,6 +1238,10 @@ workflows:
 #            - linux-x64-checkout
 
       - linux-x64-unittests:
+          requires:
+            - linux-x64-checkout
+
+      - linux-x64-disabled-unittests:
           requires:
             - linux-x64-checkout
 
