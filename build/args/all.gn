@@ -11,4 +11,9 @@ ffmpeg_branding = "Chrome"
 
 enable_basic_printing = true
 
+# We only rely on printing related features,
+# for converting a web document to pdf this feature
+# need not be enabled.
+enable_print_preview = false
+
 is_cfi = false
