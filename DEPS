@@ -60,7 +60,7 @@ vars = {
 
 deps = {
   'src': {
-    'url': (Var("chromium_git")) + '/chromium/src.git@' + (Var("chromium_version")),
+    'url': 'https://github.com/shawnanastasio/chromium.git@' + (Var("chromium_version")),
     'condition': 'checkout_chromium',
   },
   'src/third_party/electron_node': {
