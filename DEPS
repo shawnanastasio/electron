@@ -10,7 +10,7 @@ gclient_gn_args = [
 
 vars = {
   'chromium_version':
-    '70.0.3538.110',
+    'c3fe86ee16293b2a54852c748423d8b2a490e434',
   'node_version':
     '1b192088522d10d126e5bb9316adae2a97add62a',
 
@@ -90,6 +90,7 @@ hooks = [
       'python',
       'src/electron/script/apply_all_patches.py',
       'src/electron/patches/common/config.json',
+      'src/electron/patches/ppc64le/config.json',
     ],
   },
   {
